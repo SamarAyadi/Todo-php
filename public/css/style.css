@@ -1,6 +1,6 @@
 /* theme */
 :root {
-  --font-family: "Open Sans", sans-serif;
+  --font-family: "Playpen Sans", cursive;
   --primary: #2196f3;
   --dark: #2c3e50;
   --background-light: #ecf0f1;
@@ -31,18 +31,44 @@ body {
   flex-flow: column;
   color: var(--text-color);
 }
+/* button */
 
+.btn {
+  background-color: white;
+  font-weight: 700;
+  color: var(--text-color);
+  font-size: 1.6rem;
+  border: 0;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 12px;
+  margin: 0 5px;
+  box-shadow: var(--box-shadow);
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: var(--text-color-light);
+  box-shadow: var(--box-shadow);
+}
+
+.btn-primary:hover {
+  background-color: var(--text-color-light);
+  color: var(--primary);
+}
 /* header */
 
 header {
+  display: flex;
   background-color: var(--primary);
   padding: 1.5rem;
   box-shadow: var(--box-shadow);
+  justify-content: center;
 }
 
 .logo {
   font-weight: 700;
-  font-size: 2rem;
+  font-size: 3rem;
   color: var(--text-color-light);
 }
 
@@ -60,17 +86,19 @@ header {
 
 footer {
   display: flex;
+  justify-content: center;
   background: var(--dark);
   flex-flow: row-reverse;
   color: var(--text-color-light);
   padding: 1.5rem;
+  font-weight: 700;
 }
 
 .todo-container {
   padding: 1.5rem;
   background-color: white;
   border: var(--border);
-  border-radius: 3px;
+  border-radius: 40px;
   min-width: 60rem;
   min-height: 40rem;
   box-shadow: var(--box-shadow);
@@ -78,4 +106,18 @@ footer {
 
 .todo-container h1 {
   text-align: center;
+}
+.todo-form {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+}
+
+.todo-form input {
+  flex: 1;
+  margin-right: 0.5rem;
+  border: var(--border);
+  border-radius: 5px;
+  padding: 10px 15px;
+  box-shadow: var(--box-shadow);
 }
