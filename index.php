@@ -1,6 +1,7 @@
 <?php
 const ERROR_REQUIRED = '🚩  Veuillez renseigner une todo ';
 const ERROR_TOO_SHORT = '🚩  Veuillez entrer au moins 5 caractères ';
+
 $filename = __DIR__ . "/data/todos.json";
 $error = '';
 $todo = '';
@@ -10,6 +11,7 @@ if (file_exists($filename)) {
     $data = file_get_contents($filename);
     $todos = json_decode($data, true) ?? [];
 }
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $_POST = filter_input_array(INPUT_POST, [
         "todo" => [
@@ -33,6 +35,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'id' => time()
         ]];
         file_put_contents($filename, json_encode($todos));
+        $todo = '';
+        header('Location: /');
     }
 }
 ?>
@@ -69,7 +73,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <button class="btn btn-primary btn-small">
                                 <?= $t['done'] ? 'Annuler' : 'Valider' ?></button>
                         </a>
-                        <button class="btn btn-danger btn-small">Supprimer</button>
+                        <a href="/remove-todo.php?id=<?= $t['id'] ?>">
+                            <button class="btn btn-danger btn-small">Supprimer</button>
+                        </a>
                     </li>
                     <?php endforeach; ?>
                 </ul>
